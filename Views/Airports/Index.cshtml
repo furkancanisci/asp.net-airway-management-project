@@ -1,0 +1,42 @@
+﻿@model List<WebApplication3.Models.AirportsViewModel>
+
+@{
+    ViewData["Title"] = "Airport Details";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr/>
+<form>
+    <button asp-action="Create" asp-controller="Airports" class="btn btn-primary">Create Airport</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null && Model.Any())
+            {
+                @foreach(var airports in Model)
+                {
+                    <tr>
+                        <td>@airports.AirportID</td>
+                        <td>@airports.AirportName</td>
+                        <td>@airports.Location</td>
+                    </tr>
+                }
+            } else
+            {
+                <tr>
+                    <td>
+                        no result
+                    </td>
+                    
+                </tr>
+                
+            }
+        </tbody>
+    </table>
+</form>
